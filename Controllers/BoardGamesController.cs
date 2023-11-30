@@ -5,6 +5,7 @@ using DiceParadiceApi.Models.DataTransferObjects;
 using DiceParadiceApi.Models.RequestFeatures;
 using DiceParadiceApi.Repository;
 using Marvin.Cache.Headers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Cosmos.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ using Newtonsoft.Json;
 namespace DiceParadiceApi.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class BoardGamesController : ControllerBase
     {

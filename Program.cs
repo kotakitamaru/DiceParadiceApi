@@ -24,6 +24,8 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
 });
+builder.Services.ConfigureJWT(builder.Configuration);
+builder.Services.AddScoped<IAuthenticationManager, AuthenticationManager>();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddAuthentication();
 builder.Services.AddControllers();

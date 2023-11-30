@@ -7,6 +7,7 @@ namespace DiceParadiceApi.Models;
 public class RepositoryContext: DbContext
 {
     public DbSet<BoardGame> BoardGames { get; set; }
+    public DbSet<User> Users { get; set; }
 
     public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options)
     {
@@ -19,6 +20,11 @@ public class RepositoryContext: DbContext
         
         modelBuilder.Entity<BoardGame>()
             .ToContainer("BoardGames")
+            .HasNoDiscriminator()
+            .HasPartitionKey(x => x.Id);
+        
+        modelBuilder.Entity<User>()
+            .ToContainer("Users")
             .HasNoDiscriminator()
             .HasPartitionKey(x => x.Id);
     }
